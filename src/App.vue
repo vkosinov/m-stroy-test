@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import TreeTable from "@/widgets/tree-table";
 </script>
 
 <template>
-  <HelloWorld />
+  <TreeTable />
 </template>
