@@ -68,4 +68,10 @@ export class TreeStore {
   addItem(item: TreeItem): void {
     methods.addItem(this.items, this.itemsMap, this.childrenMap, item);
   }
+
+  // Принимает id элемента и удаляет соответствующий элемент и
+  // все его дочерние элементы из хранилища.
+  removeItem(id: TreeItemId): void {
+    methods.removeItem(this.items, this.itemsMap, this.childrenMap, id);
+  }
 }
