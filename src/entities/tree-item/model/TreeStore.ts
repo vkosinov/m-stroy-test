@@ -62,4 +62,10 @@ export class TreeStore {
   getAllParents(id: TreeItemId): TreeItem[] {
     return methods.getAllParents(this.itemsMap, id);
   }
+
+  // Принимает объект нового элемента и добавляет его в общую
+  // структуру хранилища.
+  addItem(item: TreeItem): void {
+    methods.addItem(this.items, this.itemsMap, this.childrenMap, item);
+  }
 }

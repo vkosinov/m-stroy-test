@@ -11,5 +11,6 @@ export const useTreeStore = (items: TreeItem[]) => {
     getChildren: store.getChildren,
     getAllChildren: store.getAllChildren,
     getAllParents: store.getAllParents,
+    addItem: store.addItem,
   };
 };
