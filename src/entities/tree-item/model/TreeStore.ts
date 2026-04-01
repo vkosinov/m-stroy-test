@@ -1,3 +1,4 @@
+import { getAll, getItem } from "./methods";
 import type { TreeItem, TreeItemId, TreeItemParentId } from "./types";
 
 export class TreeStore {
@@ -28,7 +29,11 @@ export class TreeStore {
     }
   }
 
-  getAll(): TreeItem[] {
-    return this.items;
+  getAll() {
+    return getAll(this.items);
+  }
+
+  getItem(id: TreeItemId) {
+    return getItem(this.itemsMap, id);
   }
 }

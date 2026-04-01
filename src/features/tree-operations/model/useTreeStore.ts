@@ -7,5 +7,6 @@ export const useTreeStore = (items: TreeItem[]) => {
   return {
     store,
     getAll: store.getAll,
+    getItem: store.getItem,
   };
 };

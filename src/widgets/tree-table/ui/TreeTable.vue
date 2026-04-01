@@ -9,6 +9,7 @@ const items = [
 const { store } = useTreeStore(items);
 
 console.log(store.getAll());
+console.log(store.getItem(2));
 </script>
 
 <template>
