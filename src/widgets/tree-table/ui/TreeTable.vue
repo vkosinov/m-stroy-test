@@ -10,6 +10,7 @@ const { store } = useTreeStore(items);
 
 console.log(store.getAll());
 console.log(store.getItem(2));
+console.log(store.getChildren(1));
 </script>
 
 <template>

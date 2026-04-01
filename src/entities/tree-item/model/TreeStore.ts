@@ -1,4 +1,4 @@
-import { getAll, getItem } from "./methods";
+import * as methods from "./methods";
 import type { TreeItem, TreeItemId, TreeItemParentId } from "./types";
 
 export class TreeStore {
@@ -29,11 +29,20 @@ export class TreeStore {
     }
   }
 
-  getAll() {
-    return getAll(this.items);
+  // Должен возвращать изначальный массив элементов
+  getAll(): TreeItem[] {
+    return methods.getAll(this.items);
   }
 
-  getItem(id: TreeItemId) {
-    return getItem(this.itemsMap, id);
+  // Принимает id элемента и возвращает сам объект элемента.
+  getItem(id: TreeItemId): TreeItem | undefined {
+    return methods.getItem(this.itemsMap, id);
+  }
+
+  // Принимает id элемента и возвращает массив элементов,
+  // являющихся дочерними для того элемента, чей id получен в аргументе. Если у
+  // элемента нет дочерних, то должен возвращаться пустой массив
+  getChildren(id: TreeItemId): TreeItem[] {
+    return methods.getChildren(this.childrenMap, id);
   }
 }

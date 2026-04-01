@@ -1,2 +1,3 @@
-export { getAll } from "./getAll";
-export { getItem } from "./getItem";
+export * from "./getAll";
+export * from "./getItem";
+export * from "./getChildren";
