@@ -53,4 +53,13 @@ export class TreeStore {
   getAllChildren(id: TreeItemId): TreeItem[] {
     return methods.getAllChildren(this.childrenMap, id);
   }
+
+  // Принимает id элемента и возвращает массив из цепочки
+  // родительских элементов, начиная от самого элемента, чей id был передан в
+  // аргументе и до корневого элемента, т.е. должен получиться путь элемента
+  // наверх дерева через цепочку родителей к корню дерева. В результате
+  // getAllParents ПОРЯДОК ЭЛЕМЕНТОВ ВАЖЕН!
+  getAllParents(id: TreeItemId): TreeItem[] {
+    return methods.getAllParents(this.itemsMap, id);
+  }
 }
