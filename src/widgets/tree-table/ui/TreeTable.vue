@@ -5,8 +5,11 @@ import { items } from "@/shared/constants";
 const { store } = useTreeStore(items);
 
 console.log("store.getAll() = ", store.getAll());
-console.log("store.removeItem(4)", store.removeItem(4));
-console.log("store.getAll() = ", store.getAll());
+console.log(
+  'store.updateItem({ id: 4, label: "", parent: null })',
+  store.updateItem({ id: 4, label: "", parent: null }),
+);
+console.log("store.state() = ", store.getState());
 </script>
 
 <template>

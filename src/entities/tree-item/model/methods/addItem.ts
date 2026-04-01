@@ -1,9 +1,9 @@
-import type { TreeItem, TreeItemId } from "../types";
+import type { TreeItem, TreeItemId, TreeItemParentId } from "../types";
 
 export const addItem = (
   items: TreeItem[],
   itemsMap: Map<TreeItemId, TreeItem>,
-  childrenMap: Map<TreeItemId, TreeItem[]>,
+  childrenMap: Map<TreeItemParentId, TreeItem[]>,
   item: TreeItem,
 ) => {
   items.push(item);

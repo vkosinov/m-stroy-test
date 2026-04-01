@@ -2,12 +2,14 @@ import * as methods from "./methods";
 import type { TreeItem, TreeItemId, TreeItemParentId } from "./types";
 
 export class TreeStore {
-  private items: TreeItem[];
+  private itemsInit: TreeItem[];
+  private state: TreeItem[];
   private itemsMap: Map<TreeItemId, TreeItem>;
   private childrenMap: Map<TreeItemParentId, TreeItem[]>;
 
   constructor(items: TreeItem[]) {
-    this.items = items;
+    this.itemsInit = [...items];
+    this.state = items;
     this.itemsMap = new Map();
     this.childrenMap = new Map();
 
@@ -18,7 +20,7 @@ export class TreeStore {
     this.itemsMap.clear();
     this.childrenMap.clear();
 
-    for (const item of this.items) {
+    for (const item of this.state) {
       this.itemsMap.set(item.id, item);
 
       if (!this.childrenMap.has(item.parent)) {
@@ -31,7 +33,11 @@ export class TreeStore {
 
   // Должен возвращать изначальный массив элементов
   getAll(): TreeItem[] {
-    return methods.getAll(this.items);
+    return methods.getAll(this.itemsInit);
+  }
+  // Должен возвращать текущее состояние
+  getState(): TreeItem[] {
+    return methods.getAll(this.state);
   }
 
   // Принимает id элемента и возвращает сам объект элемента.
@@ -66,12 +72,18 @@ export class TreeStore {
   // Принимает объект нового элемента и добавляет его в общую
   // структуру хранилища.
   addItem(item: TreeItem): void {
-    methods.addItem(this.items, this.itemsMap, this.childrenMap, item);
+    methods.addItem(this.state, this.itemsMap, this.childrenMap, item);
   }
 
   // Принимает id элемента и удаляет соответствующий элемент и
   // все его дочерние элементы из хранилища.
   removeItem(id: TreeItemId): void {
-    methods.removeItem(this.items, this.itemsMap, this.childrenMap, id);
+    methods.removeItem(this.state, this.itemsMap, this.childrenMap, id);
+  }
+
+  // Принимает объект обновленного айтема и актуализирует
+  // этот айтем в хранилище
+  updateItem(item: TreeItem): void {
+    methods.updateItem(this.state, this.itemsMap, this.childrenMap, item);
   }
 }

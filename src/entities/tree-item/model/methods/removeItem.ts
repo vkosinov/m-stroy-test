@@ -1,10 +1,10 @@
-import type { TreeItem, TreeItemId } from "../types";
+import type { TreeItem, TreeItemId, TreeItemParentId } from "../types";
 import { getAllChildren } from "./getAllChildren";
 
 export const removeItem = (
   items: TreeItem[],
   itemsMap: Map<TreeItemId, TreeItem>,
-  childrenMap: Map<TreeItemId, TreeItem[]>,
+  childrenMap: Map<TreeItemParentId, TreeItem[]>,
   id: TreeItemId,
 ): TreeItem[] => {
   const toRemove = [id, ...getAllChildren(childrenMap, id).map((i) => i.id)];
