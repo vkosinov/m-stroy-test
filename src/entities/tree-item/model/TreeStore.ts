@@ -45,4 +45,12 @@ export class TreeStore {
   getChildren(id: TreeItemId): TreeItem[] {
     return methods.getChildren(this.childrenMap, id);
   }
+
+  // Принимает id элемента и возвращает массив элементов,
+  // являющихся прямыми дочерними элементами того, чей id получен в аргументе +
+  // если у них в свою очередь есть еще дочерние элементы, они все тоже будут
+  // включены в результат и так до самого глубокого уровня.
+  getAllChildren(id: TreeItemId): TreeItem[] {
+    return methods.getAllChildren(this.childrenMap, id);
+  }
 }

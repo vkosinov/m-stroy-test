@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import { useTreeStore } from "@/features/tree-operations";
-
-const items = [
-  { id: 1, parent: null, label: "item 1" },
-  { id: 2, parent: 1, label: "item 2" },
-];
+import { items } from "@/shared/constants";
 
 const { store } = useTreeStore(items);
 
-console.log(store.getAll());
-console.log(store.getItem(2));
-console.log(store.getChildren(1));
+console.log("store.getAll() = ", store.getAll());
+console.log("store.getItem('91064cee') = ", store.getItem("91064cee"));
+console.log("store.getChildren(1) = ", store.getChildren(1));
+console.log("store.getAllChildren(4) = ", store.getAllChildren(4));
 </script>
-
+x
 <template>
   <h1>TreeTable</h1>
 </template>

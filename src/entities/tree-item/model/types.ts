@@ -1,5 +1,5 @@
-export type TreeItemId = number;
-export type TreeItemParentId = number | null;
+export type TreeItemId = number | string;
+export type TreeItemParentId = number | string | null;
 
 export interface TreeItem {
   id: TreeItemId;
